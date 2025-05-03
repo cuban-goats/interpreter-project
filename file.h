@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #ifndef FILE_H
+#define FILE_H
 
 #define ROWS 50
 #define COLS 100

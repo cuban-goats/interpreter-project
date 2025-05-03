@@ -1,4 +1,5 @@
 #ifndef PARSE_H
+#define PARSE_H
 
 #define ROWS 50
 #define COLS 100
