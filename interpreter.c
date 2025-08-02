@@ -2,7 +2,7 @@
 #include "format.h"
 #include "sort.h"
 #include "parse.h"
-
+#include "stack.h"
 
 int main(int argc, char *argv[]) {
   if (argc < 2) {

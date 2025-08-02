@@ -1,13 +1,7 @@
-#include <stdbool.h>
+#include "stack.h"
+#include <stdlib.h>
 
-#define STACK_LENGTH 20
-#define EMPTY (-1)
-
-typedef struct {
-  int stack_values[STACK_LENGTH];
-  int top;
-} stack;
-
+/*
 bool push(stack *mystack, int value) {
   if (mystack->top >= STACK_LENGTH - 1)
     return false;
@@ -20,15 +14,41 @@ bool push(stack *mystack, int value) {
 bool pop(stack *mystack) {
   if (mystack->top == EMPTY)
     return false;
-  
+
   int result = mystack->stack_values[mystack->top];
   mystack->top--;
   return true;
 }
+*/
 
+typedef node *stack;
+
+bool push(stack *mystack, int value) {
+  node *newnode = malloc(sizeof(node));
+  if (newnode == NULL)
+    return false;
+  newnode->value = value;
+  newnode->next = *mystack;
+  *mystack = newnode;
+  return true;
+}
+
+int pop(stack *mystack) {
+  if (*mystack == NULL)
+    return STACK_EMPTY;
+
+  int result = (*mystack)->value;
+  node *tmp = *mystack;
+  *mystack = (*mystack)->next;
+  free(tmp);
+  return result;
+}
+
+/*
 int main() {
   stack stack_one;
   stack_one.top = -1;
   push(&stack_one, 20);
   return 0;
 }
+*/
