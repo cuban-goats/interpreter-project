@@ -9,6 +9,6 @@
 
 typedef node *stack;
 
-void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH], stack *mystack);
+void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH], stack mystack);
 
 #endif

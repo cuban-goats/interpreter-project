@@ -3,6 +3,7 @@
 #include "parse.h"
 #include "sort.h"
 #include "stack.h"
+#include "run.h"
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {

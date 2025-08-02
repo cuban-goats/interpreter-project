@@ -1,26 +1,6 @@
 #include "stack.h"
 #include <stdlib.h>
 
-/*
-bool push(stack *mystack, int value) {
-  if (mystack->top >= STACK_LENGTH - 1)
-    return false;
-
-  mystack->top++;
-  mystack->stack_values[mystack->top] = value;
-  return true;
-}
-
-bool pop(stack *mystack) {
-  if (mystack->top == EMPTY)
-    return false;
-
-  int result = mystack->stack_values[mystack->top];
-  mystack->top--;
-  return true;
-}
-*/
-
 typedef node *stack;
 
 bool push(stack *mystack, int value) {
