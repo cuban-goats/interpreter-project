@@ -1,8 +1,9 @@
 #include "file.h"
 #include "format.h"
-#include "sort.h"
 #include "parse.h"
+#include "sort.h"
 #include "stack.h"
+#include <stdio.h>
 
 int main(int argc, char *argv[]) {
   if (argc < 2) {
@@ -27,18 +28,18 @@ int main(int argc, char *argv[]) {
   char opcode[ROWS][MAX_OPCODE][COLS] = {0}; // Fixed-size 3D array
   split_and_store(program, line_count, opcode);
 
-  // char clean_opcode[CLEAN_ROWS][MAX_CLEAN_OPCODE][CLEAN_COLS] = {};
-  // remove_spaces(opcode, clean_opcode);
-
-  // get labels and print it
+  // list of all labels and tokens
   char labels[MAX_LABELLENGTH][MAX_LABELS];
   char tokens[MAX_TOKENLENGTH][MAX_TOKENS];
 
   // is just the pointer to opcode
   char *instruction[ROWS][MAX_OPCODE][COLS];
+
+  // store labels and tokens in an array;
   get_labels(labels, opcode);
   get_tokens(tokens, opcode);
-
+  
+  // not done yet because of copying into program array
   parse(opcode);
 
   printf("\n");
@@ -50,7 +51,6 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
-
 
 // Function to print the full opcode and labels
 void print_opcode(char opcode[ROWS][MAX_OPCODE][COLS], int line_count) {

@@ -46,8 +46,7 @@ int pop(stack *mystack) {
 
 /*
 int main() {
-  stack stack_one;
-  stack_one.top = -1;
+  stack stack_one = NULL;
   push(&stack_one, 20);
   return 0;
 }

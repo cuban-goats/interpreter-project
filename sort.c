@@ -7,6 +7,7 @@ void get_labels(char labels[MAX_LABELLENGTH][MAX_LABELS],
   // To keep track of where to store the labels in the array
   int labels_index = 0;
 
+  // just stores Labels, not their position in relation to their name
   int label_tracker[MAX_LABELS] = {};
   int label_count = 0;
 
@@ -59,7 +60,7 @@ void get_tokens(char tokens[MAX_TOKENLENGTH][MAX_TOKENS],
       }
     }
   }
-  // Print all stored labels
+  // Print all stored Tokens
   printf("\nStored Tokens:\n");
   for (int l = 0; l < token_counter; l++) {
     printf("%s\n", tokens[l]);
