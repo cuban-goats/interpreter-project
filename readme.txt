@@ -1,5 +1,5 @@
 # 
-# Toaster
+# Toasterlang
 #
 # Created on: Oct 14, 2024
 #   Author: Erik Koston
@@ -11,7 +11,7 @@
 # push value onto a stack
 TOASTERPUSH
 
-# remove value from the stack (which the pointer points to)
+# remove value from the stack
 TOASTERPOP
 
 # pop 2 numbers from the stack and push the sum
