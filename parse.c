@@ -37,7 +37,7 @@ void parse(char opcode[ROWS][MAX_OPCODE][COLS]) {
       else if (strcmp(opcode[i][j], "PRINT") == 0) {
         strcpy(string_literal, opcode[i][j + 1]);
         // save the value of the string_literal
-        printf("String after PRINT: %s \n", string_literal);
+        // printf("String after PRINT: %s \n", string_literal);
       } else if (strcmp(opcode[i][j], "JUMP.EQ.0") == 0) {
         strcpy(label, opcode[i][j + 1]);
         printf("Label after JUMP.EQ.0: %s \n", label);

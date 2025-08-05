@@ -1,6 +1,6 @@
+#include "sort.h"
 #include <stdio.h>
 #include <string.h>
-#include "sort.h"
 
 void get_labels(char labels[MAX_LABELLENGTH][MAX_LABELS],
                 char opcode[ROWS][MAX_OPCODE][COLS]) {
@@ -31,11 +31,13 @@ void get_labels(char labels[MAX_LABELLENGTH][MAX_LABELS],
     }
   }
   // Print all stored labels
+  /*
   printf("\nStored Labels:\n");
   for (int m = 0; m < labels_index; m++) {
     printf("%s (index %d)\n", labels[m], label_tracker[m]);
   }
   printf("\n");
+  */
 }
 
 void get_tokens(char tokens[MAX_TOKENLENGTH][MAX_TOKENS],
@@ -61,9 +63,11 @@ void get_tokens(char tokens[MAX_TOKENLENGTH][MAX_TOKENS],
     }
   }
   // Print all stored Tokens
+  /*
   printf("\nStored Tokens:\n");
   for (int l = 0; l < token_counter; l++) {
     printf("%s\n", tokens[l]);
   }
   printf("\n");
+  */
 }

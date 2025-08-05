@@ -17,7 +17,8 @@ void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH],
       int number = strtol(program[i+1], &endptr, 10);
       push(&mystack, number);
     } else if (strcmp(program[i], "POP") == 0) {
-      pop(&mystack);
+      int popped = pop(&mystack);
+      printf("popped value: %i \n", popped);
     } else if (strcmp(program[i], "SUB") == 0) {
       int one = pop(&mystack);
       int two = pop(&mystack);
