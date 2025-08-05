@@ -1,29 +1,39 @@
 #include "run.h"
 #include "sort.h"
 #include "stack.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH],
          stack mystack) {
-
-  char opcode[MAX_OPCODE][MAX_OPCODE_LENGTH];
+  
+  char *endptr;
   int pc = 0;
   for (int i = 0; i < MAX_INSTRUCTIONS; i++) {
     if (strcmp(program[i], "HALT") == 0) {
       break;
-    } else if (strcmp(opcode[i], "PUSH") == 0) {
-      // NOTE: change to be the next element, which is expected to be a number
-      int number = 0;
+    } else if (strcmp(program[i], "PUSH") == 0) {
+      int number = strtol(program[i+1], &endptr, 10);
       push(&mystack, number);
-    } else if (strcmp(opcode[i], "POP") == 0) {
+    } else if (strcmp(program[i], "POP") == 0) {
       pop(&mystack);
-    } else if (strcmp(opcode[i], "SUB") == 0) {
-      // subtraction
-    } else if (strcmp(opcode[i], "ADD") == 0) {
-      // addition
-    } else if (strcmp(opcode[i], "PRINT") == 0) {
-      // get next element and print it
-    } else if (strcmp(opcode[i], "READ") == 0) {
+    } else if (strcmp(program[i], "SUB") == 0) {
+      int one = pop(&mystack);
+      int two = pop(&mystack);
+      int subtracted = one - two;
+      printf("subtracted value: %i \n", subtracted);
+      push(&mystack, subtracted);
+    } else if (strcmp(program[i], "ADD") == 0) {
+      int one = pop(&mystack);
+      int two = pop(&mystack);
+      int added = one + two;
+      printf("added value: %i \n", added);
+      push(&mystack, added);
+    } else if (strcmp(program[i], "PRINT") == 0) {
+      char *str = program[i+1];
+      printf("%s \n", str);
+    } else if (strcmp(program[i], "READ") == 0) {
       // read user input, push it to stack
     }
   }

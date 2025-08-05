@@ -47,6 +47,11 @@ int main(int argc, char *argv[]) {
   // Print the full opcode
   // print_opcode(opcode, line_count);
 
+  // initialize a stack
+  stack s1 = NULL;
+
+  run(tokens, s1);
+
   // Close the file
   fclose(filepointer);
 

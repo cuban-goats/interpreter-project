@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef node *stack;
@@ -10,6 +11,7 @@ bool push(stack *mystack, int value) {
   newnode->value = value;
   newnode->next = *mystack;
   *mystack = newnode;
+  printf("pushed value: %i \n", value);
   return true;
 }
 

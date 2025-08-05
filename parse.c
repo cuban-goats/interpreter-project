@@ -31,7 +31,7 @@ void parse(char opcode[ROWS][MAX_OPCODE][COLS]) {
       if (strcmp(opcode[i][j], "PUSH") == 0) {
         // save the value of the number
         int number = strtol(opcode[i][j + 1], &endptr, 10);
-        printf("Number after PUSH: %i \n", number);
+        // printf("Number after PUSH: %i \n", number);
       }
       // PRINT, the next token must be a string
       else if (strcmp(opcode[i][j], "PRINT") == 0) {
