@@ -1,10 +1,12 @@
+#include <stdio.h>
+#include <string.h>
 #include "file.h"
 #include "format.h"
 #include "parse.h"
 #include "sort.h"
 #include "stack.h"
 #include "run.h"
-#include <stdio.h>
+#include "list.h"
 
 int main(int argc, char *argv[]) {
   if (argc < 2) {
@@ -29,6 +31,9 @@ int main(int argc, char *argv[]) {
   char opcode[ROWS][MAX_OPCODE][COLS] = {0}; // Fixed-size 3D array
   split_and_store(program, line_count, opcode);
 
+  // Close the file
+  fclose(filepointer);
+
   // list of all labels and tokens
   char labels[MAX_LABELLENGTH][MAX_LABELS];
   char tokens[MAX_TOKENLENGTH][MAX_TOKENS];
@@ -41,7 +46,10 @@ int main(int argc, char *argv[]) {
   get_tokens(tokens, opcode);
   
   // not done yet because of copying into program array
-  parse(opcode);
+  char runner[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH];
+  int label_tracker[MAX_LABELS];
+  int token_counter;
+  parse(opcode, runner, label_tracker, token_counter);
 
   printf("\n");
   // Print the full opcode
@@ -50,10 +58,18 @@ int main(int argc, char *argv[]) {
   // initialize a stack
   stack s1 = NULL;
 
-  run(tokens, s1);
+  // run(tokens, s1);
+  
+  list_node_t *head = NULL;
+  list_node_t *temp;
+  strcpy(runner[0], "0");
+  strcpy(runner[1], "1");
 
-  // Close the file
-  fclose(filepointer);
+  temp = add_node(runner[0]);
+  append_node(&head, temp);
+  temp = add_node(runner[1]);
+  append_node(&head, temp);
+  print_list(head);
 
   return 0;
 }
