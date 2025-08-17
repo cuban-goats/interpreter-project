@@ -64,10 +64,13 @@ int main(int argc, char *argv[]) {
   list_node_t *temp;
   strcpy(runner[0], "0");
   strcpy(runner[1], "1");
+  strcpy(runner[2], "2");
 
   temp = add_node(runner[0]);
   append_node(&head, temp);
   temp = add_node(runner[1]);
+  append_node(&head, temp);
+  temp = add_node(runner[2]);
   append_node(&head, temp);
   print_list(head);
 
