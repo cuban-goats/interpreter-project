@@ -1,12 +1,12 @@
-#include <stdio.h>
-#include <string.h>
 #include "file.h"
 #include "format.h"
+#include "list.h"
 #include "parse.h"
+#include "run.h"
 #include "sort.h"
 #include "stack.h"
-#include "run.h"
-#include "list.h"
+#include <stdio.h>
+#include <string.h>
 
 int main(int argc, char *argv[]) {
   if (argc < 2) {
@@ -44,12 +44,11 @@ int main(int argc, char *argv[]) {
   // store labels and tokens in an array;
   get_labels(labels, opcode);
   get_tokens(tokens, opcode);
-  
+
   // not done yet because of copying into program array
   char runner[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH];
   int label_tracker[MAX_LABELS];
-  int token_counter;
-  parse(opcode, runner, label_tracker, token_counter);
+  int token_counter = 0;
 
   printf("\n");
   // Print the full opcode
@@ -59,20 +58,16 @@ int main(int argc, char *argv[]) {
   stack s1 = NULL;
 
   // run(tokens, s1);
-  
-  list_node_t *head = NULL;
-  list_node_t *temp;
-  strcpy(runner[0], "0");
-  strcpy(runner[1], "1");
-  strcpy(runner[2], "2");
 
-  temp = add_node(runner[0]);
-  append_node(&head, temp);
-  temp = add_node(runner[1]);
-  append_node(&head, temp);
-  temp = add_node(runner[2]);
-  append_node(&head, temp);
-  print_list(head);
+  // list_node_t *head = NULL;
+  // list_node_t *temp;
+
+  parse(opcode, label_tracker, token_counter);
+  strcpy(runner[0], "0");
+
+  // temp = add_node(runner[0]);
+  // append_node(&head, temp);
+  // print_list(head);
 
   return 0;
 }

@@ -3,6 +3,7 @@
 
 #include "run.h"
 #include "sort.h"
+#include "list.h"
 #define ROWS 50
 #define COLS 100
 
@@ -16,6 +17,6 @@
 
 #define MAX_STR_LENGTH 10
 
-void parse(char opcode[ROWS][MAX_OPCODE][COLS], char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH], int label_tracker[MAX_LABELS], int token_counter);
+void parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS], int token_counter);
 
 #endif // !PARSE_H

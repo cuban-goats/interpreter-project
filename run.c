@@ -11,7 +11,7 @@ void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH],
   char *endptr;
   int pc = 0;
   for (int i = 0; i < MAX_INSTRUCTIONS; i++) {
-    if (strcmp(program[i], "TOASTERHALT") == 0) {
+    if (strcmp(program[i], "TOASTERSTOP") == 0) {
       printf("Toaster now finished running");
       break;
     } else if (strcmp(program[i], "TOASTERPUSH") == 0) {
