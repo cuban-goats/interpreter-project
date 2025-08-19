@@ -52,8 +52,30 @@ void run_ll(list_node_t *head, stack mystack) {
     } else if (strcmp(temp->list_node_value, "PUSH") == 0) {
       list_node_t *next_node = get_next_node(temp);
       printf("%s\n", next_node->list_node_value);
-      int number = (int) strtol(next_node->list_node_value, &end_ptr, 10);;
+      int number = (int)strtol(next_node->list_node_value, &end_ptr, 10);
       push(&mystack, number);
+    } else if (strcmp(temp->list_node_value, "POP") == 0) {
+      int popped = pop(&mystack);
+      printf("popped value: %i \n", popped);
+    } else if (strcmp(temp->list_node_value, "SUB") == 0) {
+      int one = pop(&mystack);
+      int two = pop(&mystack);
+      int subtracted = one - two;
+      printf("subtracted value: %i \n", subtracted);
+      push(&mystack, subtracted);
+    } else if (strcmp(temp->list_node_value, "ADD") == 0) {
+      int one = pop(&mystack);
+      int two = pop(&mystack);
+      int added = one + two;
+      printf("added value: %i \n", added);
+      push(&mystack, added);
+    } else if (strcmp(temp->list_node_value, "PRINT") == 0) {
+      list_node_t *next_node = get_next_node(temp);
+      // printf("%s\n", next_node->list_node_value);
+      char *str = next_node->list_node_value;
+      printf("%s \n", str);
+    } else if (strcmp(temp->list_node_value, "READ") == 0) {
+      // read user input, push it to stack
     }
     temp = temp->next;
   }
