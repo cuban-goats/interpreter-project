@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS],
-           int token_counter) {
+list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
+                   int label_tracker[MAX_LABELS], int token_counter) {
   // count number of tokens (to get indexes) (not in use)
   // to get the index of the label
   // int token_counter = 0;
@@ -24,6 +24,10 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LA
   list_node_t *head = NULL;
   list_node_t *temp;
 
+  // char placeholder[200] = "#";
+  // temp = add_node(placeholder);
+  // append_node(&head, temp);
+
   for (int i = 0; i < ROWS; i++) {
     for (int j = 0; j < MAX_OPCODE; j++) {
       if (strcmp(opcode[i][j], "\0") == 1) {
@@ -39,8 +43,10 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LA
         int number = strtol(opcode[i][j + 1], &endptr, 10);
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
+        // prefix_node(head, temp);
         temp = add_node(opcode[i][j + 1]);
         append_node(&head, temp);
+        // prefix_node(head, temp);
         token_counter++;
 
       } else if (strcmp(opcode[i][j], "PRINT") == 0) {
@@ -72,6 +78,7 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LA
       } else if (strcmp(opcode[i][j], "STOP") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
+        // prefix_node(head, temp);
       } else if (strcmp(opcode[i][j], "POP") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
@@ -87,5 +94,6 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LA
       }
     }
   }
+  head = reverse_list(head);
   return head;
 }

@@ -63,7 +63,9 @@ int main(int argc, char *argv[]) {
 
   list_node_t *head = parse(opcode, label_tracker, token_counter);
   print_list(head);
-  get_list_len(head);
+  // get_list_len(head);
+  // get_next_node(head);
+  run_ll(head, s1);
 
   strcpy(runner[0], "0");
 
@@ -76,7 +78,6 @@ int main(int argc, char *argv[]) {
 
 // Function to print the full opcode and labels
 void print_opcode(char opcode[ROWS][MAX_OPCODE][COLS], int line_count) {
-
   printf("Full Opcode and Labels: \n");
   for (int i = 0; i < line_count; i++) {
     for (int j = 0; j < MAX_OPCODE; j++) {
