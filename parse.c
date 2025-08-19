@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS],
+list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS],
            int token_counter) {
   // count number of tokens (to get indexes) (not in use)
   // to get the index of the label
@@ -87,5 +87,5 @@ void parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS],
       }
     }
   }
-  print_list(head);
+  return head;
 }

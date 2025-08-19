@@ -17,6 +17,6 @@
 
 #define MAX_STR_LENGTH 10
 
-void parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS], int token_counter);
+list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS], int label_tracker[MAX_LABELS], int token_counter);
 
 #endif // !PARSE_H

@@ -13,7 +13,7 @@ void print_list(list_node_t *head) {
     temp = temp->next;
   }
   printf("\n");
-};
+}
 
 list_node_t *add_node(char list_node_value[MAX_INSTRUCTION_LENGTH]) {
   list_node_t *result = malloc(sizeof(list_node_t));
@@ -21,10 +21,22 @@ list_node_t *add_node(char list_node_value[MAX_INSTRUCTION_LENGTH]) {
   result->list_node_value[MAX_INSTRUCTION_LENGTH - 1] = '\0';
   result->next = NULL;
   return result;
-};
+}
 
 list_node_t *append_node(list_node_t **head, list_node_t *node_to_append) {
   node_to_append->next = *head;
   *head = node_to_append;
   return node_to_append;
-};
+}
+
+int get_list_len(list_node_t *head) {
+  int list_len = 0;
+
+  list_node_t *temp = head;
+  while (temp != NULL) {
+    list_len++;
+    temp = temp->next;
+  }
+  printf("%i\n", list_len);
+  return list_len;
+}

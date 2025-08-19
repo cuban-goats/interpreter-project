@@ -1,6 +1,7 @@
 #ifndef RUN_H
 #define RUN_H
 
+#include "list.h"
 #include "stack.h"
 
 #define MAX_INSTRUCTIONS 200
@@ -10,5 +11,6 @@
 typedef node *stack;
 
 void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH], stack mystack);
+void run_ll(list_node_t *head, stack mystack);
 
 #endif

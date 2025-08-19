@@ -51,7 +51,6 @@ int main(int argc, char *argv[]) {
   int token_counter = 0;
 
   printf("\n");
-  // Print the full opcode
   // print_opcode(opcode, line_count);
 
   // initialize a stack
@@ -62,7 +61,10 @@ int main(int argc, char *argv[]) {
   // list_node_t *head = NULL;
   // list_node_t *temp;
 
-  parse(opcode, label_tracker, token_counter);
+  list_node_t *head = parse(opcode, label_tracker, token_counter);
+  print_list(head);
+  get_list_len(head);
+
   strcpy(runner[0], "0");
 
   // temp = add_node(runner[0]);

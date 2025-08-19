@@ -40,3 +40,7 @@ void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH],
     }
   }
 }
+
+void run_ll(list_node_t *head, stack mystack) {
+
+}
