@@ -29,7 +29,7 @@ list_node_t *append_node(list_node_t **head, list_node_t *node_to_append) {
   return node_to_append;
 }
 
-list_node_t *prefix_node(list_node_t *head ,list_node_t *new_node) {
+list_node_t *prefix_node(list_node_t *head, list_node_t *new_node) {
   char head_indicator[200] = "#";
   list_node_t *node_to_insert_after = find_node(head, head_indicator);
   new_node->next = node_to_insert_after->next;
@@ -85,4 +85,15 @@ list_node_t *reverse_list(list_node_t *head) {
   }
   // new head
   return prev;
+}
+
+list_node_t *get_node_by_index(list_node_t *head, int list_index) {
+  list_node_t *temp = head;
+  int counter = 0;
+  while (temp != NULL) {
+    if (counter == list_index)
+      return temp;
+    temp = temp->next;
+  }
+  return NULL;
 }

@@ -46,7 +46,9 @@ int main(int argc, char *argv[]) {
   get_tokens(tokens, opcode);
 
   // char runner[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH];
-  int label_tracker[MAX_LABELS];
+
+  // saves the labels at the index, where to jump to
+  char label_tracker[ROWS][COLS];
   int token_counter = 0;
 
   printf("\n");
@@ -57,7 +59,7 @@ int main(int argc, char *argv[]) {
   // run(tokens, s1);
   list_node_t *head = parse(opcode, label_tracker, token_counter);
   print_list(head);
-  run_ll(head, s1);
+  run_ll(head, s1, label_tracker);
 
   return 0;
 }

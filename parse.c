@@ -1,15 +1,12 @@
 #include "parse.h"
 #include "list.h"
-#include "run.h"
-#include "sort.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 // ROWS are just the program lines
 
 list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
-                   int label_tracker[MAX_LABELS], int token_counter) {
-  char label_tracker_local[ROWS][COLS];
+                   char label_tracker[ROWS][COLS], int token_counter) {
   char *endptr;
 
   char string_literal[MAX_STR_LENGTH];
@@ -29,8 +26,9 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
         printf("null terminator at: i=%i, j=%i", i, j);
         continue;
       } else if (strchr(opcode[i][j], ':') != NULL) {
-        strcpy(label_tracker_local[token_counter], opcode[i][j]);
-        printf("Here is the linenumber of where to jump: %i\n", token_counter);
+        // Copy without the ':'
+        strcpy(label_tracker[token_counter], opcode[i][j]);
+        // printf("Here is the linenumber of where to jump: %i\n", token_counter);
         continue;
       }
 

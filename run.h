@@ -1,6 +1,7 @@
 #ifndef RUN_H
 #define RUN_H
 
+#include "format.h"
 #include "list.h"
 #include "stack.h"
 
@@ -11,6 +12,6 @@
 typedef node *stack;
 
 void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH], stack mystack);
-void run_ll(list_node_t *head, stack mystack);
+void run_ll(list_node_t *head, stack mystack, char label_tracker[ROWS][COLS]);
 
 #endif
