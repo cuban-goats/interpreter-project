@@ -5,16 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+// ROWS are just the program lines
 
 list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
                    int label_tracker[MAX_LABELS], int token_counter) {
-  // count number of tokens (to get indexes) (not in use)
-  // to get the index of the label
-  // int token_counter = 0;
-
-  // to track on which index a label is (not in use)
-  // int label_tracker[MAX_LABELS] = {};
-
+  char label_tracker_local[ROWS][COLS];
   char *endptr;
 
   char string_literal[MAX_STR_LENGTH];
@@ -24,7 +19,7 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
   list_node_t *head = NULL;
   list_node_t *temp;
 
-  // char placeholder[200] = "#";
+  // char head_indicator[200] = "#";
   // temp = add_node(placeholder);
   // append_node(&head, temp);
 
@@ -34,8 +29,8 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
         printf("null terminator at: i=%i, j=%i", i, j);
         continue;
       } else if (strchr(opcode[i][j], ':') != NULL) {
-        // label_tracker[opcode without ":"] = token_counter
-        // value of opcode as key to get values for specific labels
+        strcpy(label_tracker_local[token_counter], opcode[i][j]);
+        printf("Here is the linenumber of where to jump: %i\n", token_counter);
         continue;
       }
 
@@ -43,10 +38,9 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
         int number = strtol(opcode[i][j + 1], &endptr, 10);
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
-        // prefix_node(head, temp);
         temp = add_node(opcode[i][j + 1]);
         append_node(&head, temp);
-        // prefix_node(head, temp);
+        token_counter++;
         token_counter++;
 
       } else if (strcmp(opcode[i][j], "PRINT") == 0) {
@@ -59,6 +53,7 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
         temp = add_node(opcode[i][j + 1]);
         append_node(&head, temp);
         token_counter++;
+        token_counter++;
 
       } else if (strcmp(opcode[i][j], "JUMP.EQ.0") == 0) {
         strcpy(label, opcode[i][j + 1]);
@@ -66,6 +61,7 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
         append_node(&head, temp);
         temp = add_node(opcode[i][j + 1]);
         append_node(&head, temp);
+        token_counter++;
         token_counter++;
 
       } else if (strcmp(opcode[i][j], "JUMP.GT.0") == 0) {
@@ -75,22 +71,27 @@ list_node_t *parse(char opcode[ROWS][MAX_OPCODE][COLS],
         temp = add_node(opcode[i][j + 1]);
         append_node(&head, temp);
         token_counter++;
+        token_counter++;
       } else if (strcmp(opcode[i][j], "STOP") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
-        // prefix_node(head, temp);
+        token_counter++;
       } else if (strcmp(opcode[i][j], "POP") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
+        token_counter++;
       } else if (strcmp(opcode[i][j], "READ") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
+        token_counter++;
       } else if (strcmp(opcode[i][j], "ADD") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
+        token_counter++;
       } else if (strcmp(opcode[i][j], "SUB") == 0) {
         temp = add_node(opcode[i][j]);
         append_node(&head, temp);
+        token_counter++;
       }
     }
   }

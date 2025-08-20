@@ -45,33 +45,19 @@ int main(int argc, char *argv[]) {
   get_labels(labels, opcode);
   get_tokens(tokens, opcode);
 
-  // not done yet because of copying into program array
-  char runner[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH];
+  // char runner[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH];
   int label_tracker[MAX_LABELS];
   int token_counter = 0;
 
   printf("\n");
-  // print_opcode(opcode, line_count);
 
   // initialize a stack
   stack s1 = NULL;
 
   // run(tokens, s1);
-
-  // list_node_t *head = NULL;
-  // list_node_t *temp;
-
   list_node_t *head = parse(opcode, label_tracker, token_counter);
   print_list(head);
-  // get_list_len(head);
-  // get_next_node(head);
   run_ll(head, s1);
-
-  strcpy(runner[0], "0");
-
-  // temp = add_node(runner[0]);
-  // append_node(&head, temp);
-  // print_list(head);
 
   return 0;
 }
