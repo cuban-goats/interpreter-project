@@ -94,6 +94,7 @@ list_node_t *get_node_by_index(list_node_t *head, int list_index) {
     if (counter == list_index)
       return temp;
     temp = temp->next;
+    counter++;
   }
   return NULL;
 }

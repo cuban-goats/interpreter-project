@@ -1,8 +1,8 @@
 PUSH 20
 PUSH 20
 SUB
-JUMP.EQ.0 L1:
+JUMP.EQ.0 L1
 
 L1:
-Print "hello"
+PRINT "hello"
 STOP

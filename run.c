@@ -61,12 +61,12 @@ void run_ll(list_node_t *head, stack mystack, char label_tracker[ROWS][COLS]) {
       break;
     } else if (strcmp(temp->list_node_value, "PUSH") == 0) {
       list_node_t *next_node = get_next_node(temp);
-      printf("%s\n", next_node->list_node_value);
+      // printf("%s\n", next_node->list_node_value);
       number = (int)strtol(next_node->list_node_value, &end_ptr, 10);
       push(&mystack, number);
     } else if (strcmp(temp->list_node_value, "POP") == 0) {
       number = pop(&mystack);
-      printf("popped value: %i \n", number);
+      // printf("popped value: %i \n", number);
     } else if (strcmp(temp->list_node_value, "SUB") == 0) {
       int one = pop(&mystack);
       int two = pop(&mystack);
@@ -89,31 +89,42 @@ void run_ll(list_node_t *head, stack mystack, char label_tracker[ROWS][COLS]) {
       push(&mystack, number);
     } else if (strcmp(temp->list_node_value, "JUMP.EQ.0") == 0) {
       number = pop(&mystack);
-      printf("popped number: %i\n", number);
+      // printf("popped number: %i\n", number);
       list_node_t *next_node = get_next_node(temp);
       char *label_declaration = next_node->list_node_value;
-      printf("This is the label declaration: %s\n", label_declaration);
-
-      // remove the ":"
-      // remove the ":" from the label_tracker
+      // printf("This is the label declaration: %s\n", label_declaration);
 
       if (number == 0) {
-        printf("true\n");
+        // printf("is 0\n");
         for (int i = 0; i < ROWS; i++) {
           if (strcmp(label_declaration, label_tracker[i]) == 0) {
-            printf("label to jump to: %s\n", label_tracker[i]);
-            int index = i;
-            printf("Index to jump to: %i\n", index);
-
-            // FIX !!!!:
-            // temp = get_node_by_index(head, index);
+            // printf("label to jump to: %s -- \n", label_tracker[i]);
+            int index = i-1;
+            // printf("Index to jump to: %i\n", index);
+            temp = get_node_by_index(head, index);
           }
         }
       }
+      push(&mystack, number);
     } else if (strcmp(temp->list_node_value, "JUMP.GT.0") == 0) {
-      // number = pop(&mystack);
-      // pop and check greater than 0
-      // true -> jump
+      number = pop(&mystack);
+      // printf("popped number: %i\n", number);
+      list_node_t *next_node = get_next_node(temp);
+      char *label_declaration = next_node->list_node_value;
+      // printf("This is the label declaration: %s\n", label_declaration);
+
+      if (number > 0) {
+        // printf("is >0\n");
+        for (int i = 0; i < ROWS; i++) {
+          if (strcmp(label_declaration, label_tracker[i]) == 0) {
+            // printf("label to jump to: %s -- \n", label_tracker[i]);
+            int index = i-1;
+            // printf("Index to jump to: %i\n", index);
+            temp = get_node_by_index(head, index);
+          }
+        }
+      }
+      push(&mystack, number);
     }
     temp = temp->next;
   }
