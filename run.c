@@ -36,7 +36,7 @@ void run(char program[MAX_INSTRUCTIONS][MAX_INSTRUCTION_LENGTH],
     } else if (strcmp(program[i], "TOASTERPRINT") == 0) {
       char *str = program[i + 1];
       printf("%s \n", str);
-    } else if (strcmp(program[i], "READ") == 0) {
+    } else if (strcmp(program[i], "TOASTERREAD") == 0) {
       // read user input, push it to stack
     }
   }
@@ -56,38 +56,38 @@ void run_ll(list_node_t *head, stack mystack, char label_tracker[ROWS][COLS]) {
 
   int number;
   while (temp != NULL) {
-    if (strcmp(temp->list_node_value, "STOP") == 0) {
+    if (strcmp(temp->list_node_value, "TOASTERSTOP") == 0) {
       printf("Toaster now finished running");
       break;
-    } else if (strcmp(temp->list_node_value, "PUSH") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERPUSH") == 0) {
       list_node_t *next_node = get_next_node(temp);
       // printf("%s\n", next_node->list_node_value);
       number = (int)strtol(next_node->list_node_value, &end_ptr, 10);
       push(&mystack, number);
-    } else if (strcmp(temp->list_node_value, "POP") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERPOP") == 0) {
       number = pop(&mystack);
       // printf("popped value: %i \n", number);
-    } else if (strcmp(temp->list_node_value, "SUB") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERSUB") == 0) {
       int one = pop(&mystack);
       int two = pop(&mystack);
       number = two - one;
       printf("subtracted value: %i \n", number);
       push(&mystack, number);
-    } else if (strcmp(temp->list_node_value, "ADD") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERADD") == 0) {
       int one = pop(&mystack);
       int two = pop(&mystack);
       number = one + two;
       printf("added value: %i \n", number);
       push(&mystack, number);
-    } else if (strcmp(temp->list_node_value, "PRINT") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERPRINT") == 0) {
       list_node_t *next_node = get_next_node(temp);
       // printf("%s\n", next_node->list_node_value);
       char *str = next_node->list_node_value;
       printf("%s \n", str);
-    } else if (strcmp(temp->list_node_value, "READ") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERREAD") == 0) {
       scanf("%d", &number);
       push(&mystack, number);
-    } else if (strcmp(temp->list_node_value, "JUMP.EQ.0") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERJUMP.EQ.0") == 0) {
       number = pop(&mystack);
       // printf("popped number: %i\n", number);
       list_node_t *next_node = get_next_node(temp);
@@ -106,7 +106,7 @@ void run_ll(list_node_t *head, stack mystack, char label_tracker[ROWS][COLS]) {
         }
       }
       push(&mystack, number);
-    } else if (strcmp(temp->list_node_value, "JUMP.GT.0") == 0) {
+    } else if (strcmp(temp->list_node_value, "TOASTERJUMP.GT.0") == 0) {
       number = pop(&mystack);
       // printf("popped number: %i\n", number);
       list_node_t *next_node = get_next_node(temp);
